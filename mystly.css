@@ -1,0 +1,286 @@
+:root{
+    --blue:#00d9ff;
+    --blue-glow:rgba(0,217,255,0.55);
+    --red:#ff2b44;
+    --red-glow:rgba(255,43,68,0.55);
+    --bg0:#020305;
+    --bg1:#0a0510;
+    --panel:#0b0e16;
+    --text:#cdeaff;
+}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    background:
+        radial-gradient(circle at 15% 0%, rgba(255,43,68,0.15), transparent 45%),
+        radial-gradient(circle at 85% 100%, rgba(0,217,255,0.15), transparent 45%),
+        linear-gradient(160deg, var(--bg0) 0%, var(--bg1) 55%, var(--bg0) 100%);
+    cursor:url('cursors/pointer.cur'), auto;
+    font-family: "Segoe UI", "TH Sarabun New", sans-serif;
+}
+a, button, .clickable{
+    cursor:url('cursors/hand.cur'), pointer;
+}
+.container{
+    width:1000px;
+    margin:0 auto;
+    box-shadow: rgba(0,0,0,0.4) 0px -23px 25px 0px inset;
+    position:relative;
+}
+
+/* ---- Header / Site title ---- */
+header{
+    background-image:
+        linear-gradient(180deg, rgba(2,3,5,0.35) 0%, rgba(2,3,5,0.85) 100%),
+        url(images/header.jpg);
+    background-size:cover;
+    background-position:center;
+    height:250px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-bottom:2px solid var(--blue);
+    box-shadow:0 0 20px var(--blue-glow);
+    position:relative;
+    overflow:hidden;
+}
+header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(0,217,255,0.06) 0 1px, transparent 1px 28px),
+        repeating-linear-gradient(90deg, rgba(255,43,68,0.05) 0 1px, transparent 1px 28px);
+    pointer-events:none;
+}
+.hud-bar{
+    position:absolute;
+    top:10px;
+    left:16px;
+    right:16px;
+    display:flex;
+    justify-content:space-between;
+    font-family:"Consolas", monospace;
+    font-size:11px;
+    letter-spacing:2px;
+    color:var(--red);
+    text-shadow:0 0 6px var(--red-glow);
+    z-index:2;
+}
+.site-title{
+    font-size:2.6rem;
+    font-weight:800;
+    letter-spacing:2px;
+    z-index:2;
+}
+.site-subtitle{
+    margin-top:8px;
+    font-family:"Consolas", monospace;
+    font-size:12px;
+    letter-spacing:4px;
+    color:var(--red);
+    text-shadow:0 0 6px var(--red-glow);
+    z-index:2;
+}
+
+/* ---- ช่องใส่รูปในHeader (สไตล์กรอบ breach-protocol) ---- */
+
+}
+.id-photo-frame::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:14px;
+    height:14px;
+    border-right:2px solid var(--red);
+    border-bottom:2px solid var(--red);
+}
+
+section{
+    display:flex;
+}
+
+/* ---- Nav ---- */
+nav{
+    background-color:#07090f;
+    flex:1;
+    border-right:1px solid rgba(0,217,255,0.3);
+}
+nav ul{
+    list-style:none;
+}
+nav a{
+    color:var(--blue);
+    text-decoration:none;
+    background-color:#0c1018;
+    display:block;
+    width:100%;
+    padding:12px 10px;
+    border-left:3px solid transparent;
+    font-family:"Consolas", monospace;
+    font-size:14px;
+    letter-spacing:1px;
+    transition: all .15s ease;
+}
+nav a::before{
+    content:"// ";
+    color:var(--red);
+}
+nav a:visited{
+    color:var(--blue);
+}
+nav a:hover{
+    color:#02030a;
+    background-color:var(--red);
+    border-left:3px solid var(--blue);
+    text-shadow:none;
+}
+nav a:active{
+    color:var(--bg0);
+    background-color:var(--blue);
+}
+
+/* ---- Article panel (breach-protocol style frame) ---- */
+article{
+    background-color:var(--panel);
+    color:var(--text);
+    flex:3;
+    padding:20px;
+    position:relative;
+    border:1px solid var(--blue);
+    box-shadow: 0 0 12px var(--blue-glow), inset 0 0 20px rgba(255,43,68,0.08);
+    clip-path: polygon(0 12px, 12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+}
+article::before{
+    content:"DATA STREAM // ACTIVE";
+    position:absolute;
+    top:6px;
+    right:16px;
+    font-family:"Consolas", monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    color:var(--red);
+    opacity:0.8;
+}
+article h1{
+    margin-bottom:14px;
+    font-size:1.8rem;
+}
+article p{
+    line-height:1.8;
+    font-size:0.98rem;
+}
+article img{
+    display:block;
+    margin-bottom:12px;
+    border:2px solid var(--red);
+    box-shadow:0 0 10px var(--red-glow);
+}
+
+/* ---- Footer ---- */
+footer{
+    background-color:#020305;
+    color:var(--blue);
+    padding:25px;
+    text-align:center;
+    border-top:2px solid var(--red);
+    box-shadow:0 0 16px var(--red-glow);
+    font-family:"Consolas", monospace;
+    letter-spacing:1px;
+}
+
+/* ---- Glitch + กระพริบ ใช้ร่วมกันได้ทั้งหัวข้อและชื่อ (.fx-glitch) ---- */
+.fx-glitch{
+    position:relative;
+    display:inline-block;
+    color:var(--blue);
+    text-shadow:0 0 8px var(--blue-glow);
+    animation: blink-glow 1.2s infinite ease-in-out, glitch-skew 4s infinite linear alternate-reverse;
+}
+.fx-glitch::before,
+.fx-glitch::after{
+    content:attr(data-text);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:transparent;
+}
+.fx-glitch::before{
+    left:2px;
+    text-shadow:-2px 0 var(--red);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+.fx-glitch::after{
+    left:-2px;
+    text-shadow:-2px 0 var(--blue), 2px 2px var(--red);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+@keyframes blink-glow{
+    0%, 100%{
+        opacity:1;
+        text-shadow:0 0 8px var(--blue-glow);
+    }
+    50%{
+        opacity:0.4;
+        text-shadow:0 0 2px rgba(0,217,255,0.2);
+    }
+}
+@keyframes glitch-anim-1{
+    0%{ clip-path: inset(10% 0 85% 0); }
+    20%{ clip-path: inset(60% 0 5% 0); }
+    40%{ clip-path: inset(30% 0 55% 0); }
+    60%{ clip-path: inset(80% 0 2% 0); }
+    80%{ clip-path: inset(5% 0 70% 0); }
+    100%{ clip-path: inset(45% 0 40% 0); }
+}
+@keyframes glitch-anim-2{
+    0%{ clip-path: inset(70% 0 15% 0); }
+    20%{ clip-path: inset(15% 0 65% 0); }
+    40%{ clip-path: inset(50% 0 30% 0); }
+    60%{ clip-path: inset(5% 0 80% 0); }
+    80%{ clip-path: inset(65% 0 10% 0); }
+    100%{ clip-path: inset(25% 0 55% 0); }
+}
+@keyframes glitch-skew{
+    0%{ transform: skew(0deg); }
+    10%{ transform: skew(0.5deg); }
+    20%{ transform: skew(0deg); }
+    30%{ transform: skew(-0.5deg); }
+    40%{ transform: skew(0deg); }
+    100%{ transform: skew(0deg); }
+}
+
+/* ---- เคอร์เซอร์เรืองแสงตามเมาส์ (เสริมกับ cursor .cur) ---- */
+#neon-cursor{
+    position:fixed;
+    top:0;
+    left:0;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,217,255,0.75) 0%, rgba(255,43,68,0.35) 60%, transparent 80%);
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    transition: width 0.15s, height 0.15s;
+    mix-blend-mode:screen;
+}
+
+#matrix-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1;
+    background-color:#000;
+    opacity:0.6;
+}
